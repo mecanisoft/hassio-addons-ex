@@ -2,7 +2,7 @@ name: Snapserver
 version: '0.5'
 slug: snapserver
 description: Snapcast server
-url: https://github.com/selleronom/hassio-addons/tree/master/snapserver
+url: https://github.com/mecanisoft/hassio-addons-ex/tree/master/snapserver
 startup: services
 arch:
 - aarch64
@@ -29,7 +29,10 @@ map:
 options:
   stream:
     streams:
-    - pipe:///share/snapfifo/librespot?name=SpotifyConnect&sampleformat=44100:16:2
+      - pipe:///share/snapfifo/librespot?name=SpotifyConnect&sampleformat=44100:16:2
+      - pipe:///share/snapfifo/mopidy?name=Mopidy&sampleformat=48000:16:2
+      - pipe:///tmp/mpd-notify?name=Notify&sampleformat=44100:16:2
+      - pipe:///share/snapfifo/shairport?name=Shairport&sampleformat=44100:16:2
     buffer: '1000'
     codec: flac
     send_to_muted: 'false'
