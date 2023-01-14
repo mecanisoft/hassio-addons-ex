@@ -9,7 +9,7 @@ providing extra Home Assistant add-ons for your installation.
 Use the following URL to add this repository:
 
 ```txt
-https://github.com/selleronom/hassio-addons
+https://github.com/mecanisoft/hassio-addons-ex
 ```
 
 ## Add-ons provided by this repository
