@@ -11,6 +11,12 @@ RUN apk add --no-cache alsa-utils
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache portaudio-dev
 RUN apk add --no-cache snapcast 
+RUN apk add --no-cache avahi-libs
+RUN apk add --no-cache libgcc
+RUN apk add --no-cache flac
+RUN apk add --no-cache opus
+RUN apk add --no-cache libvorbis
+RUN apk add --no-cache llvm-libunwind
 
 # Copy root filesystem
 COPY rootfs /
