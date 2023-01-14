@@ -40,6 +40,3 @@ echo "threads = $(bashio::config 'server.threads')" >> "${config}"
 
 echo "[server]" >> "${config}"
 echo "datadir = $(bashio::config 'server.datadir')" >> "${config}"
-
-cd /root/snapcastr/
-poetry run snapcastrd --sc_host=$SNAPCAST_HOST --port 5011 --host 0.0.0.0
