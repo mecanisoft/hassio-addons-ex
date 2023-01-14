@@ -21,7 +21,7 @@ RUN apk add --no-cache llvm-libunwind
 RUN apk add --no-cache pulseaudio
 RUN apk add --no-cache htop
 RUN apk add --no-cache python3
-RUN apk add --no-cache python-pip  
+RUN apk add --no-cache py3-pip  
 RUN apk add --no-cache rygel
 RUN apk add --no-cache bash
 RUN apk add --no-cache tumbler
