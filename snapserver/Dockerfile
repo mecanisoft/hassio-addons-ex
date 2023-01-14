@@ -25,11 +25,7 @@ RUN apk add --no-cache py3-pip
 RUN apk add --no-cache rygel
 RUN apk add --no-cache bash
 RUN apk add --no-cache tumbler
-RUN apk add --no-cache gstreamer1.0-plugins-base
-RUN apk add --no-cache gstreamer1.0-plugins-good
-RUN apk add --no-cache gstreamer1.0-plugins-bad
-RUN apk add --no-cache gstreamer1.0-plugins-ugly
-RUN apk add --no-cache gstreamer1.0-libav
+RUN apk add --no-cache gstreamer
 RUN apk add --no-cache openrc
 
 # Copy root filesystem
