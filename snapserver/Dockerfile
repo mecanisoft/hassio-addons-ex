@@ -25,7 +25,7 @@ RUN apk add --no-cache py3-pip
 RUN apk add --no-cache tumbler
 RUN apk add --no-cache gstreamer
 RUN apk add --no-cache openrc
-RUN apk add --no-cache rygel
+RUN apk add --no-cache minidlna
 
 # Copy root filesystem
 COPY rootfs /
