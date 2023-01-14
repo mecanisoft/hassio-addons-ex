@@ -16,6 +16,15 @@ RUN apk add --no-cache alsa-utils
 # RUN apk add --no-cache avahi-daemon
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache snapcast 
+RUN apk add ssl-cert
+RUN apk add ca-certificates
+RUN apk add --no-cache gcc
+RUN apk add --no-cache python3-dev
+RUN apk add --no-cache linux-kernel-headers
+RUN apk add --no-cache python3-pip
+RUN pip3 install poetry
+RUN apk add --no-cache python3-venv
+RUN pip install snapcastr
 
 # Copy root filesystem
 COPY rootfs /
