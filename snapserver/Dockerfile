@@ -5,7 +5,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache protobuf-dev
-RUN   RUN apk add --update --no-cache pulseaudio pulseaudio-alsa pulseaudio-utils alsa-lib
+RUN apk add --update --no-cache pulseaudio  pulseaudio-alsa pulseaudio-utils alsa-lib
 RUN apk add --no-cache snapcast 
 
 
