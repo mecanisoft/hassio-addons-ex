@@ -41,7 +41,7 @@ options:
     sampleformat: '48000:16:2'
   http:
     enabled: 'true'
-    doc_root: " "
+    doc_root: "/usr/share/snapserver/snapweb"
   tcp:
     enabled: 'true'
   logging:
