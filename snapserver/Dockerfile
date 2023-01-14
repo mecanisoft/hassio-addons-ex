@@ -6,9 +6,14 @@ ENV LANG C.UTF-8
 
 RUN apk update
 RUN apk upgrade
-RUN apk add --no-cache protobuf-dev curl jq git build-essential libasound2-dev libvorbisidec-dev 
-RUN apk add --no-cache libvorbis-dev libflac-dev alsa-utils libavahi-client-dev avahi-daemon
-RUN apk add --no-cache build-essential debhelper dh-make dh-systemd quilt fakeroot lintian
+RUN apk add --no-cache protobuf-dev
+RUN apk add --no-cache libasound2-dev 
+RUN apk add --no-cache libvorbisidec-dev 
+RUN apk add --no-cache libvorbis-dev 
+RUN apk add --no-cache libflac-dev 
+RUN apk add --no-cache alsa-utils 
+RUN apk add --no-cache libavahi-client-dev 
+RUN apk add --no-cache avahi-daemon
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache snapcast 
 
