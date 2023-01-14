@@ -4,16 +4,14 @@ FROM $BUILD_FROM
 # Add env
 ENV LANG C.UTF-8
 
+RUN apk update
+RUN apk upgrade
 RUN apk add --no-cache protobuf-dev
-RUN apk add --no-cache pulseaudio pulseaudio-alsa pulseaudio-utils alsa-lib
+RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache snapcast 
-RUN apk add --no-cache sof-firmwrae
-
 
 # Copy root filesystem
 COPY rootfs /
-
-ENTRYPOINT ["/usr/bin/pulseaudio", "--system", "--disallow-exit", "--disallow-module-loading", "--daemonize=no"]
 
 LABEL \
     io.hass.version="VERSION" \
