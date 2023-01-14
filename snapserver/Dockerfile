@@ -25,7 +25,8 @@ RUN apk add --no-cache py3-pip
 RUN apk add --no-cache tumbler
 RUN apk add --no-cache gstreamer
 RUN apk add --no-cache openrc
-RUN apk add --no-cache minidlna
+RUN apk add --no-cache alsa-plugins-pulse
+RUN apk add --no-cache pulseaudio-module-zeroconf 
 
 # Copy root filesystem
 COPY rootfs /
