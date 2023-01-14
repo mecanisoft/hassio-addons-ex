@@ -13,8 +13,6 @@ RUN apk add --no-cache portaudio-dev
 
 RUN apk add --no-cache tumbler
 RUN apk add --no-cache gstreamer
-RUN apk add --no-cache avahi
-RUN apk add --no-cache avahi-libs
 RUN apk add --no-cache libgcc
 RUN apk add --no-cache flac
 RUN apk add --no-cache opus
