@@ -18,6 +18,20 @@ RUN apk add --no-cache opus
 RUN apk add --no-cache libvorbis
 RUN apk add --no-cache llvm-libunwind
 
+RUN apk add --no-cache pulseaudio
+RUN apk add --no-cache htop
+RUN apk add --no-cache python3
+RUN apk add --no-cache python3-pip  
+RUN apk add --no-cache rygel
+RUN apk add --no-cache bash
+RUN apk add --no-cache tumbler
+RUN apk add --no-cache gstreamer1.0-plugins-base
+RUN apk add --no-cache gstreamer1.0-plugins-good
+RUN apk add --no-cache gstreamer1.0-plugins-bad
+RUN apk add --no-cache gstreamer1.0-plugins-ugly
+RUN apk add --no-cache gstreamer1.0-libav
+RUN apk add --no-cache openrc
+
 # Copy root filesystem
 COPY rootfs /
 
