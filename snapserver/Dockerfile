@@ -11,6 +11,7 @@ RUN apk add --no-cache alsa-utils
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache portaudio-dev
 RUN apk add --no-cache snapcast 
+RUN apk add --no-cache avahi
 RUN apk add --no-cache avahi-libs
 RUN apk add --no-cache libgcc
 RUN apk add --no-cache flac
@@ -27,6 +28,16 @@ RUN apk add --no-cache gstreamer
 RUN apk add --no-cache openrc
 RUN apk add --no-cache alsa-plugins-pulse
 RUN apk add --no-cache pulseaudio-utils 
+RUN apk add --no-cache bluez 
+RUN apk add --no-cache bluez-libs 
+RUN apk add --no-cache bluez-firmware
+RUN apk add --no-cache libdaemon
+RUN apk add --no-cache pulseaudio-dev
+RUN apk add --no-cache pulseaudio-zeroconf
+RUN apk add --no-cache pulseaudio-utils
+RUN apk add --no-cache pulseaudio-alsa
+RUN apk add --no-cache pulseaudio-bluez
+RUN apk add --no-cache pulseaudio-jack
 
 # Copy root filesystem
 COPY rootfs /
