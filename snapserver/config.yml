@@ -35,6 +35,7 @@ options:
       - pipe:///share/snapfifo/mopidy?name=Mopidy&sampleformat=48000:16:2
       - pipe:///tmp/mpd-notify?name=Notify&sampleformat=44100:16:2
       - pipe:///share/snapfifo/shairport?name=Shairport&sampleformat=44100:16:2
+      - pipe:///tmp/sharesound/snapfifo?name=Radio
     buffer: '1000'
     codec: flac
     send_to_muted: 'false'
