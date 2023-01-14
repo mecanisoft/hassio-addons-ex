@@ -13,7 +13,7 @@ RUN apk add --no-cache protobuf-dev
 # RUN apk add --no-cache libflac-dev 
 RUN apk add --no-cache alsa-utils 
 # RUN apk add --no-cache libavahi-client-dev 
-RUN apk add --no-cache avahi-daemon
+# RUN apk add --no-cache avahi-daemon
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache snapcast 
 
