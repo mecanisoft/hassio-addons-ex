@@ -9,7 +9,9 @@ RUN apk upgrade
 RUN apk add --no-cache protobuf-dev
 RUN apk add --no-cache alsa-utils 
 RUN apk add --no-cache alsa-lib
+RUn aok add --no-cache portaudio-dev
 RUN apk add --no-cache snapcast 
+
 # Copy root filesystem
 COPY rootfs /
 
