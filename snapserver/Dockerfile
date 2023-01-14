@@ -5,24 +5,14 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache protobuf-dev
-RUN   apk add --no-cache pulseaudio-utils
+RUN   RUN apk add --update --no-cache pulseaudio pulseaudio-alsa pulseaudio-utils alsa-lib
 RUN apk add --no-cache snapcast 
-
-# Set up the user
-RUN export UNAME=$UNAME UID=1000 GID=1000 && \
-    mkdir -p "/home/${UNAME}" && \
-    echo "${UNAME}:x:${UID}:${GID}:${UNAME} User,,,:/home/${UNAME}:/bin/bash" >> /etc/passwd && \
-    echo "${UNAME}:x:${UID}:" >> /etc/group && \
-    mkdir -p /etc/sudoers.d && \
-    echo "${UNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${UNAME} && \
-    chmod 0440 /etc/sudoers.d/${UNAME} && \
-    chown ${UID}:${GID} -R /home/${UNAME} && \
-    gpasswd -a ${UNAME} audio
 
 
 # Copy root filesystem
 COPY rootfs /
-COPY pulse-client.conf /etc/pulse/client.conf
+
+ENTRYPOINT ["/usr/bin/pulseaudio", "--system", "--disallow-exit", "--disallow-module-loading", "--daemonize=no"]
 
 LABEL \
     io.hass.version="VERSION" \
