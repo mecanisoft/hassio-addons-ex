@@ -20,12 +20,12 @@ ports:
   1704/tcp: 1704
   1705/tcp: 1705
   1780/tcp: 1780
-  4713/tcp: 4713
+  5011/tcp: 5011
 ports_description:
   1704/tcp: Snapcast server port
   1705/tcp: Snapcast TCP control port (set empty to disable)
   1780/tcp: Snapcast HTTP control port (set empty to disable)
-  4713/tcp: PulseAudio
+  5011/tcp: snapcastr
 map:
 - share:rw
 options:
