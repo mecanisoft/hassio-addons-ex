@@ -5,6 +5,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache protobuf-dev
+RUN apk add --no-cache dbus
 RUN apk add --no-cache alsa-utils 
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache portaudio-dev
