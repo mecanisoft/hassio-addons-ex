@@ -8,8 +8,8 @@ RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache protobuf-dev
 # RUN apk add --no-cache libasound2-dev 
-RUN apk add --no-cache libvorbisidec-dev 
-RUN apk add --no-cache libvorbis-dev 
+# RUN apk add --no-cache libvorbisidec-dev 
+# RUN apk add --no-cache libvorbis-dev 
 RUN apk add --no-cache libflac-dev 
 RUN apk add --no-cache alsa-utils 
 RUN apk add --no-cache libavahi-client-dev 
