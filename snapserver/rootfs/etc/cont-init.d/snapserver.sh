@@ -40,3 +40,7 @@ echo "threads = $(bashio::config 'server.threads')" >> "${config}"
 
 echo "[server]" >> "${config}"
 echo "datadir = $(bashio::config 'server.datadir')" >> "${config}"
+
+
+
+pulseaudio --system --disallow-exit
