@@ -45,6 +45,8 @@ options:
     doc_root: "/usr/share/snapserver/snapweb"
   tcp:
     enabled: 'true'
+  pulseaudio:
+    pipe_path:'/pipes/phono'
   logging:
     enabled: 'false'
   server:
