@@ -7,5 +7,4 @@
 bashio::log.info 'Starting Snapserver...'
 exec /usr/bin/snapserver_up
 
-pulseaudio --system --disallow-exit
 
