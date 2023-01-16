@@ -4,23 +4,48 @@ FROM $BUILD_FROM
 # Add env
 ENV LANG C.UTF-8
 
-RUN apk add --no-cache asio
-RUN apk add --no-cache avahi-libs
-RUN apk add --no-cache flac
-RUN apk add --no-cache libvorbis
-RUN apk add --no-cache alsa-lib
-RUN apk add --no-cache snapcast
+# Add edge and testing as tagged repositories to APK (will only be used when tag is explicitly named)
+RUN echo -e "@edge https://dl-cdn.alpinelinux.org/alpine/edge/main\n@edgecommunity https://dl-cdn.alpinelinux.org/alpine/edge/community\n@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+  && apk update
 
-RUN apk add --no-cache libasound2
-RuN apk add --no-cache libvorbisfile3
-RUN apk add --no-cache pulseaudio 
-RUN apk add --no-cache pulseaudio-utils 
-RUN apk add --no-cache gettext
+# Install shairport-sync Runtime dependencies
+RUN apk add --no-cache dbus alsa-lib libdaemon popt libressl soxr avahi libconfig 
 
+# Note: Build shairport-sync with metadata, stdout and pipe support (apk repo is without)
+#   APK way: `RUN apk add shairport-sync --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing`
+RUN apk add --no-cache git build-base autoconf automake libtool alsa-lib-dev libdaemon-dev popt-dev libressl-dev soxr-dev avahi-dev libconfig-dev \
+  && mkdir -p /srv/build \
+  && cd /srv/build \
+  && git clone https://github.com/mikebrady/shairport-sync.git shairport-sync \
+  && cd shairport-sync \
+  && autoreconf -i -f \
+  && ./configure \
+        --with-alsa \
+        --with-pipe \
+        --with-stdout \
+        --with-avahi \
+        --with-ssl=openssl \
+        --with-soxr \
+        --with-metadata \
+  && make \
+  && make install \
+  && cd / \
+  && apk del --purge git build-base autoconf automake libtool alsa-lib-dev libdaemon-dev popt-dev libressl-dev soxr-dev avahi-dev libconfig-dev
 
+# Install snapcast
+# Note: Do not install snapcast-server (does not include webdir, ...), install snapcast instead
+# FixMe: Added libstdc++ from edge to meet newest snapcast dependencies. Can be removed, if main libstdc++ is updated (10.3.1_git20211027-r0 -> 11.2.1_git20211128-r3) [2021-12-28]
+RUN apk add --no-cache libstdc++@edge snapcast@edgecommunity
 
-
-
+# Install librespot (Spotify Client)
+RUN apk add --no-cache libconfig-dev alsa-lib-dev cargo \
+  && cargo install librespot \
+  && apk del --purge libconfig-dev alsa-lib-dev cargo
+  
+# Cleanup
+RUN rm -rf \
+  /srv/build \
+  /var/cache/apk/*
 
 # Copy root filesystem
 COPY rootfs /
