@@ -1,3 +1,12 @@
 #!/bin/bash
 
+# Prepare DBUS for avahi
+rm -rf /var/run
+mkdir -p /var/run/dbus
+dbus-uuidgen --ensure
+dbus-daemon --system
+
+# Start avahi
+avahi-daemon  --daemonize --no-chroot
+
 /usr/bin/snapserver -c /etc/snapserver.conf
