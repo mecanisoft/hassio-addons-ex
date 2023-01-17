@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 
 
 RUN apk add --no-cache asio
-RUN apk add --no-cache avahi-libs
+# RUN apk add --no-cache avahi-libs
 RUN apk add --no-cache flac
 RUN apk add --no-cache libvorbis
 RUN apk add --no-cache alsa-lib
