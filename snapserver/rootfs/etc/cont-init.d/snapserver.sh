@@ -41,9 +41,8 @@ echo "threads = $(bashio::config 'server.threads')" >> "${config}"
 echo "[server]" >> "${config}"
 echo "datadir = $(bashio::config 'server.datadir')" >> "${config}"
 
-service dbus start
+
 # Start avahi
 avahi-daemon  --daemonize --no-chroot
-pulseaudio --system --disallow-exit
-# --daemonize=no --realtime --log-target=stderr -vvvvv
+pulseaudio --system --disallow-exit --daemonize=no --realtime --log-target=stderr -vvvvv
 
