@@ -6,20 +6,18 @@ ENV LANG C.UTF-8
 
 
 
-RUN apk add --no-cache dbus
+RUN apk add --no-cache asio
+RUN apk add --no-cache avahi-libs
+RUN apk add --no-cache flac
+RUN apk add --no-cache libvorbis
 RUN apk add --no-cache alsa-lib
-RUN apk add --no-cache libdaemon
-RUN apk add --no-cache popt
-RUN apk add --no-cache soxr
-RUN apk add --no-cache avahi
-RUN apk add --no-cache libconfig
-
-RUN apk add --no-cache libstdc++
 RUN apk add --no-cache snapcast
-RUN apk add --no-cache libtool
-# RUN apk add --no-cache pulseaudio 
-# RUN apk add --no-cache pulseaudio-utils
 
+RUN apk add --no-cache libasound2
+RuN apk add --no-cache libvorbisfile3
+RUN apk add --no-cache pulseaudio 
+RUN apk add --no-cache pulseaudio-utils 
+RUN apk add --no-cache gettext
 
 # Copy root filesystem
 COPY rootfs /
