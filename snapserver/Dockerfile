@@ -20,15 +20,7 @@ RUN apk add --no-cache snapcast@edgecommunity
 RUN apk add --no-cache libtool
 RUN apk add --no-cache pulseaudio 
 RUN apk add --no-cache pulseaudio-utils
-# RUN apk add --no-cache pulseaudio-module-bluetooth
-# RUN apk add --no-cache bluez-firmware
-RUN apk add --no-cache libavahi-client3
-RUN apk add --no-cache libavahi-common3
-# RUN apk add --no-cache usbip
-# RUN apk add --no-cache gosu
 
-# Verify if gosu is working
-RUN gosu nobody true
 
 # Copy root filesystem
 COPY rootfs /
