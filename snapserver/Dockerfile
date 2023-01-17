@@ -33,11 +33,6 @@ RUN gosu nobody true
 # Copy root filesystem
 COPY rootfs /
 
-RUN useradd -d /home/pulseaudio -m -s /bin/bash pulseaudio
-RUN chown -R pulseaudio:root /home/pulseaudio
-RUN mkdir -p /run/snapcast/
-
-
 
 LABEL \
     io.hass.version="VERSION" \
