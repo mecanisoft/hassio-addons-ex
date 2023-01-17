@@ -4,48 +4,49 @@ FROM $BUILD_FROM
 # Add env
 ENV LANG C.UTF-8
 
-# Add edge and testing as tagged repositories to APK (will only be used when tag is explicitly named)
-RUN echo -e "@edge https://dl-cdn.alpinelinux.org/alpine/edge/main\n@edgecommunity https://dl-cdn.alpinelinux.org/alpine/edge/community\n@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-  && apk update
 
-# Install shairport-sync Runtime dependencies
-RUN apk add --no-cache dbus alsa-lib libdaemon popt libressl soxr avahi libconfig 
+RUN echo -e "@edge https://dl-cdn.alpinelinux.org/alpine/edge/main\n@edgecommunity https://dl-cdn.alpinelinux.org/alpine/edge/community\n@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN  apk update
+RUN apk add --no-cache dbus
+RUN apk add --no-cache alsa-lib
+RUN apk add --no-cache libdaemon
+RUN apk add --no-cache popt
+RUN apk add --no-cache libressl
+RUN apk add --no-cache soxr
+RUN apk add --no-cache avahi
+RUN apk add --no-cache libconfig
 
-# Note: Build shairport-sync with metadata, stdout and pipe support (apk repo is without)
-#   APK way: `RUN apk add shairport-sync --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing`
-RUN apk add --no-cache git build-base autoconf automake libtool alsa-lib-dev libdaemon-dev popt-dev libressl-dev soxr-dev avahi-dev libconfig-dev \
-  && mkdir -p /srv/build \
-  && cd /srv/build \
-  && git clone https://github.com/mikebrady/shairport-sync.git shairport-sync \
-  && cd shairport-sync \
-  && autoreconf -i -f \
-  && ./configure \
-        --with-alsa \
-        --with-pipe \
-        --with-stdout \
-        --with-avahi \
-        --with-ssl=openssl \
-        --with-soxr \
-        --with-metadata \
-  && make \
-  && make install \
-  && cd / \
-  && apk del --purge git build-base autoconf automake libtool alsa-lib-dev libdaemon-dev popt-dev libressl-dev soxr-dev avahi-dev libconfig-dev
+RUN apk add --no-cache libstdc++@edge
+RUN apk add --no-cache snapcast@edgecommunity
+RUN apk add --no-cache git
+RUN apk add --no-cache build-base
+RUN apk add --no-cache autoconf
+RUN apk add --no-cache automake
+RUN apk add --no-cache libtool
+RUN apk add --no-cache alsa-lib-dev
+RUN apk add --no-cache libdaemon-dev
+RUN apk add --no-cache popt-dev
+RUN apk add --no-cache libressl-dev
+RUN apk add --no-cache soxr-dev
+RUN apk add --no-cache avahi-dev
+RUN apk add --no-cache libconfig-dev
+RUN apk add --no-cache cargo
+RUN apk add --no-cache nginx
+RUN apk add --no-cache openssl
 
-# Install snapcast
-# Note: Do not install snapcast-server (does not include webdir, ...), install snapcast instead
-# FixMe: Added libstdc++ from edge to meet newest snapcast dependencies. Can be removed, if main libstdc++ is updated (10.3.1_git20211027-r0 -> 11.2.1_git20211128-r3) [2021-12-28]
-RUN apk add --no-cache libstdc++@edge snapcast@edgecommunity
+RUN mkdir -p /srv/build
+RUN cd /srv/build
+RUN git clone https://github.com/mikebrady/shairport-sync.git shairport-sync
+RUN cd shairport-sync
+RUN autoreconf -i -f
+RUN ./configure --with-alsa --with-pipe --with-stdout --with-avahi --with-ssl=openssl --with-soxr --with-metadata 
+RUN make
+RUN make install
+RUN cd /
 
-# Install librespot (Spotify Client)
-RUN apk add --no-cache libconfig-dev alsa-lib-dev cargo \
-  && cargo install librespot \
-  && apk del --purge libconfig-dev alsa-lib-dev cargo
-  
-# Cleanup
-RUN rm -rf \
-  /srv/build \
-  /var/cache/apk/*
+RUN cargo install librespot
+
+RUN mkdir -p /run/nginx/ /srv/certs/
 
 # Copy root filesystem
 COPY rootfs /
