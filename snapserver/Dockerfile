@@ -24,7 +24,7 @@ RUN apk add --no-cache libvorbis
 # Copy root filesystem
 COPY rootfs /
 
-RUN dbus-uuidgen > /var/lib/dbus/machine-id
+# RUN dbus-uuidgen > /var/lib/dbus/machine-id
 RUN mkdir -p /var/run/dbus
 RUN mkdir -p /tmp/snapcast/
 
