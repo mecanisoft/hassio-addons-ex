@@ -43,7 +43,7 @@ ports_description:
   1780/tcp: Snapcast HTTP control port (set empty to disable)
   3689/tcp: Airport
   5000/tcp: Airport
-  5001/tcp: Aiport
+  5001/tcp: Airport
   5002/tcp: Airport
   5003/tcp: Airport
   5004/tcp: Airport
