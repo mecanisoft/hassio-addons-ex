@@ -19,15 +19,6 @@ RUN apk add --no-cache libstdc++@edge
 RUN apk add --no-cache snapcast@edgecommunity
 RUN apk add --no-cache libtool
 
-RUN apk add --no-cache cargo
-# RUN apk add --no-cache nginx
-# RUN apk add --no-cache openssl
-
-
-RUN cargo install librespot
-
-# RUN mkdir -p /run/nginx/ /srv/certs/
-
 # Copy root filesystem
 COPY rootfs /
 
