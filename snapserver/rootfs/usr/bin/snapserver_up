@@ -6,7 +6,6 @@ mkdir -p /var/run/dbus
 dbus-uuidgen --ensure
 dbus-daemon --system
 
-# Start avahi
-avahi-daemon  --daemonize --no-chroot
+
 
 /usr/bin/snapserver -c /etc/snapserver.conf
