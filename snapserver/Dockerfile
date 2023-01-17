@@ -18,8 +18,8 @@ RUN apk add --no-cache libconfig
 RUN apk add --no-cache libstdc++@edge
 RUN apk add --no-cache snapcast@edgecommunity
 RUN apk add --no-cache libtool
-RUN apk add --no-cache pulseaudio 
-RUN apk add --no-cache pulseaudio-utils
+# RUN apk add --no-cache pulseaudio 
+# RUN apk add --no-cache pulseaudio-utils
 
 
 # Copy root filesystem
