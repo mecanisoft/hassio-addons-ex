@@ -13,7 +13,7 @@ RUN apk add --no-cache libvorbis
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache snapcast
 
-RUN apk add --no-cache libasound2
+# RUN apk add --no-cache libasound2
 RUN apk add --no-cache libvorbis
 # RUN apk add --no-cache pulseaudio 
 # RUN apk add --no-cache pulseaudio-utils 
