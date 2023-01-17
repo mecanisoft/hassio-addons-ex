@@ -31,7 +31,7 @@ RUN apk add --no-cache soxr-dev
 RUN apk add --no-cache avahi-dev
 RUN apk add --no-cache libconfig-dev
 RUN apk add --no-cache cargo
-RUN apk add --no-cache nginx
+# RUN apk add --no-cache nginx
 RUN apk add --no-cache openssl
 
 RUN mkdir -p /srv/build
@@ -39,14 +39,15 @@ RUN cd /srv/build
 RUN git clone https://github.com/mikebrady/shairport-sync.git shairport-sync
 RUN cd shairport-sync
 RUN autoreconf -i -f
-RUN ./configure --with-alsa --with-pipe --with-stdout --with-avahi --with-ssl=openssl --with-soxr --with-metadata 
+RUN ./configure --with-alsa --with-pipe --with-stdout --with-avahi  --with-soxr --with-metadata 
+# --with-ssl=openssl
 RUN make
 RUN make install
 RUN cd /
 
 RUN cargo install librespot
 
-RUN mkdir -p /run/nginx/ /srv/certs/
+# RUN mkdir -p /run/nginx/ /srv/certs/
 
 # Copy root filesystem
 COPY rootfs /
