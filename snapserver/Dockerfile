@@ -20,20 +20,24 @@ RUN apk add --no-cache snapcast@edgecommunity
 RUN apk add --no-cache libtool
 RUN apk add --no-cache pulseaudio 
 RUN apk add --no-cache pulseaudio-utils
+RUN apk add --no-cache pulseaudio-module-bluetooth
+RUN apk add --no-cache bluez-firmware
+RUN apk add --no-cache libavahi-client3
+RUN apk add --no-cache libavahi-common3
+RUN apk add --no-cache usbip
+RUN apk add --no-cache gosu
 
-# Set up the user
-RUN export UNAME=$UNAME UID=1000 GID=1000 && \
-    mkdir -p "/home/${UNAME}" && \
-    echo "${UNAME}:x:${UID}:${GID}:${UNAME} User,,,:/home/${UNAME}:/bin/bash" >> /etc/passwd && \
-    echo "${UNAME}:x:${UID}:" >> /etc/group && \
-    mkdir -p /etc/sudoers.d && \
-    echo "${UNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${UNAME} && \
-    chmod 0440 /etc/sudoers.d/${UNAME} && \
-    chown ${UID}:${GID} -R /home/${UNAME} && \
-    gpasswd -a ${UNAME} audio
-    
+# Verify if gosu is working
+RUN gosu nobody true
+
 # Copy root filesystem
 COPY rootfs /
+
+RUN useradd -d /home/pulseaudio -m -s /bin/bash pulseaudio
+RUN chown -R pulseaudio:root /home/pulseaudio
+RUN mkdir -p /run/snapcast/
+
+
 
 LABEL \
     io.hass.version="VERSION" \
