@@ -7,6 +7,8 @@ ENV LANG C.UTF-8
 
 
 RUN apk add --no-cache asio
+RUN apk add --no-cache avahi
+RUN apk add --no-cache dbus
 # RUN apk add --no-cache avahi-libs
 RUN apk add --no-cache flac
 RUN apk add --no-cache libvorbis
@@ -22,6 +24,9 @@ RUN apk add --no-cache libvorbis
 # Copy root filesystem
 COPY rootfs /
 
+RUN dbus-uuidgen > /var/lib/dbus/machine-id
+RUN mkdir -p /var/run/dbus
+RUN mkdir -p /tmp/snapcast/
 
 LABEL \
     io.hass.version="VERSION" \
