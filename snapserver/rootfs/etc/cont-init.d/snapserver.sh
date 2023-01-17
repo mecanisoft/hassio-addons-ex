@@ -42,5 +42,7 @@ echo "[server]" >> "${config}"
 echo "datadir = $(bashio::config 'server.datadir')" >> "${config}"
 
 
-
+# Start avahi
+avahi-daemon  --daemonize --no-chroot
 pulseaudio --system --disallow-exit
+
