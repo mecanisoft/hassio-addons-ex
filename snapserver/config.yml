@@ -20,39 +20,13 @@ ports:
   1704/tcp: 1704
   1705/tcp: 1705
   1780/tcp: 1780
-  3689/tcp: 3689
-  5000/tcp: 5000
-  5000/tcp: 5000
-  5001/tcp: 5001
-  5002/tcp: 5002
-  5003/tcp: 5003
-  5004/tcp: 5004
-  5005/tcp: 5005
-  3689/tcp: 3689
-  6000/udp: 6000
-  6001/udp: 6001
-  6002/udp: 6002
-  6003/udp: 6003
-  6004/udp: 6004
-  6005/udp: 6005
+ 
   5353/tcp: 5353
   
 ports_description:
   1704/tcp: Snapcast server port
   1705/tcp: Snapcast TCP control port (set empty to disable)
   1780/tcp: Snapcast HTTP control port (set empty to disable)
-  3689/tcp: Airport
-  5000/tcp: Airport
-  5001/tcp: Airport
-  5002/tcp: Airport
-  5003/tcp: Airport
-  5004/tcp: Airport
-  5005/tcp: Airport
-  6001/udp: Airport
-  6002/udp: Airport
-  6003/udp: Airport
-  6004/udp: Airport
-  6005/udp: Airport
   5353/tcp: Avahi
   
 map:
