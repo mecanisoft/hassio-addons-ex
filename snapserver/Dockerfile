@@ -11,7 +11,6 @@ RUN apk add --no-cache dbus
 RUN apk add --no-cache alsa-lib
 RUN apk add --no-cache libdaemon
 RUN apk add --no-cache popt
-RUN apk add --no-cache libressl
 RUN apk add --no-cache soxr
 RUN apk add --no-cache avahi
 RUN apk add --no-cache libconfig
