@@ -5,9 +5,9 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache asio
-# RUN apk add --no-cache dbus
+RUN apk add --update dbus
 RUN apk add --update avahi
-
+RUN apk add --no-cache avahi-tools
 RUN apk add --no-cache flac
 RUN apk add --no-cache libvorbis
 RUN apk add --no-cache alsa-lib
@@ -23,6 +23,8 @@ RUN mkdir -p /var/run/dbus
 RUN mkdir -p /tmp/snapcast/
 
 RUN  dbus-uuidgen > /var/lib/dbus/machine-id 
+
+RUN sed -i 's/#enable-dbus=yes/enable-dbus=no/g' /etc/avahi/avahi-daemon.conf
 
 
 LABEL \
