@@ -3,6 +3,9 @@
 # Sets up the configuration file for snapserver
 # ==============================================================================
 
+/etc/init.d/dbus start
+/etc/init.d/avahi-daemon start
+
 mkdir -p /share/snapfifo
 mkdir -p /share/snapcast
 
