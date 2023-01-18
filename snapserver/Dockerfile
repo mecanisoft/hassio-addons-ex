@@ -6,8 +6,7 @@ ENV LANG C.UTF-8
 
 RUN apk add --no-cache asio
 # RUN apk add --no-cache dbus
-RUN apk add --update avahi && \
-    sed -i 's/#enable-dbus=yes/enable-dbus=yes/g' /etc/avahi/avahi-daemon.conf
+RUN apk add --update avahi
 
 RUN apk add --no-cache flac
 RUN apk add --no-cache libvorbis
@@ -24,7 +23,7 @@ RUN mkdir -p /var/run/dbus
 RUN mkdir -p /tmp/snapcast/
 
 RUN  dbus-uuidgen > /var/lib/dbus/machine-id 
-RUN  mkdir -p /var/run/dbus
+
 
 LABEL \
     io.hass.version="VERSION" \
