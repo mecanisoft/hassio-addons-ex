@@ -21,11 +21,12 @@ ports:
   1705/tcp: 1705
   1780/tcp: 1780
   4713/tcp: 4713 
+  5353/udp: 5353
 ports_description:
   1704/tcp: Snapcast server port
   1705/tcp: Snapcast TCP control port (set empty to disable)
   1780/tcp: Snapcast HTTP control port (set empty to disable)
-  5353/tcp: Avahi
+  5353/udp: Avahi
 map:
 - share:rw
 options:
@@ -34,7 +35,6 @@ options:
         - pipe:///share/snapfifo/librespot?name=SpotifyConnect&sampleformat=44100:16:2
         - pipe:///share/snapfifo/mopidy?name=Mopidy&sampleformat=48000:16:2
         - pipe:///tmp/mpd-notify?name=Notify&sampleformat=44100:16:2
-        - pipe:///tmp/sharesound/snapfifo?name=Radio
     buffer: '1000'
     codec: flac
     send_to_muted: 'false'
