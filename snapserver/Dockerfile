@@ -4,11 +4,11 @@ FROM $BUILD_FROM
 # Add env
 ENV LANG C.UTF-8
 
-
-
 RUN apk add --no-cache asio
-RUN apk add --no-cache avahi
 RUN apk add --no-cache dbus
+RUN apk add --update avahi && \
+    sed -i 's/#enable-dbus=yes/enable-dbus=no/g' /etc/avahi/avahi-daemon.conf
+
 RUN apk add --no-cache flac
 RUN apk add --no-cache libvorbis
 RUN apk add --no-cache alsa-lib
