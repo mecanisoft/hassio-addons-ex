@@ -23,10 +23,6 @@ COPY rootfs /
 RUN mkdir -p /var/run/dbus
 RUN mkdir -p /tmp/snapcast/
 
-RUN  dbus-uuidgen > /var/lib/dbus/machine-id 
-
-RUN sed -i 's/#enable-dbus=yes/enable-dbus=no/g' /etc/avahi/avahi-daemon.conf
-
 
 LABEL \
     io.hass.version="VERSION" \
