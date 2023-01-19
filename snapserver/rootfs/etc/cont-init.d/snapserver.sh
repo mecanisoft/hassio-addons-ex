@@ -3,7 +3,7 @@
 # Sets up the configuration file for snapserver
 # ==============================================================================
 
-
+rm -f /var/run/avahi-daemon/*
 mkdir -p /share/snapfifo
 mkdir -p /share/snapcast
 
