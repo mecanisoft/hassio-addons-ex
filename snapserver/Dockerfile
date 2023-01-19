@@ -4,6 +4,7 @@ FROM $BUILD_FROM
 # Add env
 ENV LANG C.UTF-8
 
+RUN apk add --no-cache augeas
 RUN apk add --no-cache asio
 RUN apk add --update dbus
 RUN apk add --update avahi
