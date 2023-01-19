@@ -16,6 +16,8 @@ RUN apk add --no-cache snapcast
 
 RUN apk add --no-cache libvorbis
 
+RUN rm /etc/avahi/services/*
+
 # Copy root filesystem
 COPY rootfs /
 
